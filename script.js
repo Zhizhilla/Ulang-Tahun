@@ -7,7 +7,7 @@ const btnCountdown = document.getElementById("btn-countdown");
 // ==========================================
 // ATUR TANGGAL TARGET COUNTDOWN DI SINI!
 // ==========================================
-const targetDate = new Date("November 11, 2026 00:00:00").getTime(); // Ganti tanggal sesuai keinginanmu
+const targetDate = new Date("November 12 2026 00:00:00").getTime(); // Ganti tanggal sesuai keinginanmu
 
 function updateCountdown() {
     const now = new Date().getTime();
