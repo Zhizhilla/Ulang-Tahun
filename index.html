@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Buat Icha✨</title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Poppins:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    </head>
+    <body>
+        <audio id="bg-music" src="bahan/lagu.mp3" loop></audio>
+
+        <div class="mobile-container">
+            <!-- 1. LOCK SCREEN -->
+            <div id="lock-screen" class="screen">
+                <div class="card-box">
+                    <span class="badge">LOCK SCREEN 🔒</span>
+                    <h2>Masih Terkunci Nih</h2>
+                    <p>
+                        Sabar yaa, website ini baru bisa dibuka pas hitungan
+                        mundur di bawah habis!
+                    </p>
+
+                    <div class="timer-box">
+                        <div class="time-unit">
+                            <span id="hours">00</span><label>Jam</label>
+                        </div>
+                        <div class="time-unit">
+                            <span id="minutes">00</span><label>Menit</label>
+                        </div>
+                        <div class="time-unit">
+                            <span id="seconds">00</span><label>Detik</label>
+                        </div>
+                    </div>
+
+                    <button id="btn-countdown" class="btn-glowing" disabled>
+                        PENCET AKU!!! 💖
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2. AMPLOP & SURAT -->
+            <div id="envelope-screen" class="screen hidden">
+                <div class="section-envelope">
+                    <div class="envelope" id="envelope">
+                        <div class="flap"></div>
+                        <div class="pocket"></div>
+                        <div class="letter"></div>
+                    </div>
+                    <p class="hint-click">
+                        ✨ Ketuk amplopnya buat buka surat! ✨
+                    </p>
+                </div>
+
+                <!-- Jendela Pop-up Blur dengan Isi Surat Langsung -->
+                <div id="letter-modal" class="letter-modal">
+                    <div class="letter-modal-content">
+                        <h3>Dear Icha ✨</h3>
+                        <p>
+                            Kepada seseorang yang pernah menjadi bagian dari
+                            hari-hari kecilku.
+                        </p>
+                        <p>
+                            Ada hal-hal yang tidak pernah benar-benar selesai
+                            meski waktu telah berlalu. Seperti sebuah cerita
+                            yang halamannya terus bertambah, tetapi
+                            tokoh-tokohnya tetap tinggal dalam ingatan.
+                        </p>
+                        <p>
+                            Dahulu, dunia kita tidak lebih luas dari halaman
+                            sekolah, lorong kelas, dan percakapan sederhana.
+                            Kita belum mengenal betapa rumitnya kehidupan, belum
+                            tahu bahwa tumbuh dewasa berarti belajar menerima
+                            banyak hal, termasuk jarak.
+                        </p>
+                        <p>Lalu waktu berjalan.</p>
+                        <p>
+                            Kita tumbuh dan menempuh jalan masing-masing. Kini,
+                            ada jarak yang membentang di antara dua tempat:
+                            Malang dan Bali. Dua kota yang menyimpan kehidupan
+                            kita dengan kesibukan dan cerita yang tak selalu
+                            bisa dibagi bersama.
+                        </p>
+                        <p>
+                            Lucu, bukan? Dulu, untuk bertemu, kita hanya perlu
+                            menunggu datangnya jam sekolah. Sekarang, bahkan
+                            untuk bertukar kabar, terkadang kita harus mencuri
+                            waktu.
+                        </p>
+                        <p>
+                            Namun, aku percaya bahwa tidak semua yang jauh akan
+                            menjadi asing. Ada orang-orang yang tempatnya tidak
+                            ditentukan oleh seberapa sering kita bertemu,
+                            melainkan oleh seberapa lama mereka menetap dalam
+                            ingatan.
+                        </p>
+                        <p>Dan <strong>kamu</strong> adalah salah satunya.</p>
+                        <p>
+                            Terima kasih telah menjadi bagian dari masa kecilku.
+                            Dari sekian banyak orang yang datang dan pergi, aku
+                            bersyukur semesta pernah mempertemukan kita.
+                        </p>
+                        <p>
+                            Aku tidak tahu seperti apa kehidupan kita beberapa
+                            tahun mendatang. Mungkin kita semakin sibuk, semakin
+                            jauh, atau memiliki dunia yang berbeda. Tetapi aku
+                            berharap, sejauh apa pun langkah kita, akan selalu
+                            ada ruang untuk mengingat bahwa kita pernah tumbuh
+                            bersama.
+                        </p>
+                        <p>Oh, hampir saja aku lupa.</p>
+                        <p>
+                            Di antara sekian banyak hari yang berlalu, rupanya
+                            ada satu hari yang istimewa. Hari ketika dunia
+                            kedatangan seseorang yang kelak menjadi bagian
+                            berharga dari cerita masa kecilku.
+                        </p>
+                        <p>
+                            <strong
+                                >Selamat naik level, karakter utamaku!</strong
+                            >
+                        </p>
+                        <p>
+                            Semoga hidup memperlakukanmu dengan lembut. Semoga
+                            hal-hal baik menemukan jalan menuju dirimu, segala
+                            doa yang diam-diam kamu langitkan perlahan menemukan
+                            jawabannya, dan di game selanjutnya bisa melewati
+                            dengan lancar meskipun pasti banyak monster-monster
+                            menghadangmu — gapapa, injek aja kayak di game mario
+                            bros wkwk.
+                        </p>
+                        <p>
+                            Jangan terlalu keras kepada dirimu sendiri. Kamu
+                            tidak harus selalu kuat atau tahu ke mana harus
+                            melangkah. Tumbuhlah dengan caramu sendiri, sebab
+                            setiap orang punya waktunya untuk mekar.
+                        </p>
+                        <p>
+                            Jika suatu hari nanti kita kembali duduk berhadapan,
+                            entah di Malang, Bali, atau tempat yang belum pernah
+                            kita bayangkan, semoga kita masih bisa tertawa
+                            seperti dua anak kecil yang dahulu belum tahu betapa
+                            cepatnya waktu berlalu.
+                        </p>
+                        <p>Sampai saat itu tiba, jagalah dirimu baik-baik.</p>
+
+                        <div class="signature-box">
+                            Dari seseorang yang pernah tumbuh bersamamu, dan
+                            masih menyimpan banyak cerita tentang kita.
+                            <strong>— Sahabatmu, yang tidak lupa.</strong>
+                        </div>
+
+                        <!-- Tombol Lanjut ke Kamera di dalam modal -->
+                        <button
+                            id="go-camera"
+                            class="btn-glowing btn-modal-action"
+                        >
+                            Lanjut ke Kamera 📸
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. KAMERA RETRO -->
+            <div id="camera-screen" class="screen hidden">
+                <div class="section-camera">
+                    <div class="camera-frame">
+                        <div class="camera-lens">
+                            <img
+                                id="camera-img"
+                                src="bahan/foto1.jpg"
+                                alt="Memory"
+                            />
+                        </div>
+                        <p id="camera-caption" class="camera-caption">
+                            sekali lagi, makasi udah hadir dalam hidup Illa! 📸
+                        </p>
+                        <div class="camera-controls">
+                            <button id="prev-btn">◀</button>
+                            <button id="next-btn">▶</button>
+                        </div>
+                    </div>
+                    <button id="btn-to-galaxy" class="btn-glowing">
+                        Pencet aku ke Galaksi!! 🚀
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4. COUNTDOWN 3-2-1 -->
+            <div id="countdown-screen" class="screen hidden">
+                <div id="countdown-number">3</div>
+            </div>
+
+            <!-- 5. GALAKSI 3D -->
+            <div id="galaxy-screen" class="screen hidden">
+                <div id="galaxy-canvas-container"></div>
+                <div class="galaxy-overlay-text">
+                    <h2 class="galaxy-title">✨ Only For U, Icha ✨</h2>
+                    <p class="galaxy-subtitle">
+                        Geser dan cubit layar untuk memutar galaksi!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

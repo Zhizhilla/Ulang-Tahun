@@ -1,0 +1,423 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(
+    circle at center,
+    #2a0826 0%,
+    #0d0d0d 70%,
+    #000000 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  overflow-x: hidden;
+  color: #ffffff;
+  font-family: "Times New Roman", Times, serif;
+}
+
+h1,
+h2,
+h3,
+.badge,
+.btn-glowing {
+  font-family: "Cinzel", serif !important;
+  letter-spacing: 1px;
+}
+
+.mobile-container {
+  width: 100%;
+  max-width: 380px;
+  height: 700px;
+  background: #121212;
+  border-radius: 28px;
+  border: 2px solid #ff2a75;
+  box-shadow: 0 0 25px rgba(255, 42, 117, 0.35);
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.badge {
+  background: rgba(255, 42, 117, 0.15);
+  color: #ff75a0;
+  border: 1px solid #ff2a75;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.timer-box {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.time-unit {
+  background: #1a1a1a;
+  border: 1px solid #ff2a75;
+  padding: 12px 8px;
+  border-radius: 14px;
+  min-width: 70px;
+}
+
+.time-unit span {
+  font-family: "Cinzel", serif;
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff75a0;
+}
+
+.time-unit label {
+  font-size: 12px;
+  color: #888888;
+}
+
+.btn-glowing {
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #ff2a75 0%, #ff75a0 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 0 20px rgba(255, 42, 117, 0.7);
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* ANIMASI OMBANG-AMBING ALIGHT MOTION */
+.section-envelope {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.envelope {
+  position: relative;
+  width: 240px;
+  height: 150px;
+  background: #ff75a0;
+  border-radius: 12px;
+  margin: 10px auto 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 42, 117, 0.4);
+  animation: alightMotionFloat 3s ease-in-out infinite;
+}
+
+@keyframes alightMotionFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(8px) rotate(-1.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.envelope .pocket {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 120px solid #ff4785;
+  border-right: 120px solid #ff4785;
+  border-top: 80px solid transparent;
+  border-bottom: 70px solid #ff3375;
+  border-radius: 0 0 12px 12px;
+  z-index: 3;
+}
+
+.envelope .flap {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-top: 85px solid #ff2a75;
+  transform-origin: top;
+  transition: transform 0.4s ease;
+  z-index: 4;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.letter {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  right: 15px;
+  height: 110px;
+  background: #fff0f5;
+  border-radius: 8px;
+  padding: 12px;
+  transition: transform 0.4s ease;
+  z-index: 2;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.envelope.open .letter {
+  transform: translateY(-130px);
+  opacity: 1;
+  z-index: 5;
+}
+
+/* JENDELA POP-UP BLUR & STYLING SURAT */
+.letter-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  padding: 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.letter-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.letter-modal-content {
+  width: 100%;
+  height: 75%;
+  background: #fff0f5;
+  border-radius: 16px;
+  border: 2px solid #ff75a0;
+  padding: 18px;
+  overflow-y: auto;
+  text-align: left;
+  box-shadow: 0 0 25px rgba(255, 42, 117, 0.6);
+  color: #333333 !important;
+}
+
+.letter-modal-content h3 {
+  font-family: "Cinzel", serif;
+  color: #ff2a75;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ffccd5;
+  padding-bottom: 6px;
+  text-align: center;
+}
+
+.letter-modal-content p {
+  color: #333333 !important;
+  font-style: italic;
+  font-size: 11.5px;
+  line-height: 1.8;
+  text-align: justify !important;
+  text-justify: inter-word;
+  margin-bottom: 12px;
+}
+
+/* PENGATURAN UKURAN BAGIAN TANDA TANGAN / PENUTUP SURAT AGAR TIDAK KEBESARAN */
+.signature-box {
+  margin-top: 20px;
+  font-style: normal;
+  font-size: 11.5px !important; /* Disesuaikan agar sama persis dengan isi surat */
+  line-height: 1.6;
+  color: #333333 !important;
+}
+
+.signature-box strong {
+  color: #ff2a75 !important;
+  font-family: "Cinzel", serif;
+  display: block;
+  margin-top: 4px;
+  font-size: 12px !important; /* Ukuran proporsional */
+}
+
+.hint-click {
+  font-size: 12px;
+  color: #ff75a0;
+  margin-top: 15px;
+}
+
+/* KAMERA RETRO */
+.section-camera {
+  width: 100%;
+}
+
+.camera-frame {
+  background: #1f1f1f;
+  border: 3px solid #ff75a0;
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 0 0 20px rgba(255, 117, 160, 0.3);
+}
+
+.camera-lens {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #333;
+  background: #000;
+}
+
+.camera-lens img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-caption {
+  font-style: italic;
+  color: #e0e0e0;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.camera-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.camera-controls button {
+  background: #ff2a75;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* COUNTDOWN & GALAKSI */
+#countdown-screen {
+  background: radial-gradient(
+    circle at center,
+    #2d0432 0%,
+    #0d0111 70%,
+    #000000 100%
+  );
+  z-index: 10;
+}
+
+#countdown-number {
+  font-size: 100px;
+  font-weight: 800;
+  color: #ff75a0;
+  font-family: "Poppins", sans-serif;
+  text-shadow: 0 0 30px rgba(255, 42, 117, 0.9);
+}
+
+#galaxy-screen {
+  background: radial-gradient(
+    circle at center,
+    #2d0432 0%,
+    #0d0111 65%,
+    #000000 100%
+  );
+  z-index: 10;
+}
+
+#galaxy-canvas-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.galaxy-overlay-text {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.galaxy-title {
+  color: #ffb6c1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
+  font-size: 15px;
+}
+
+.galaxy-subtitle {
+  font-size: 11px;
+  color: #b0b0b0;
+  font-style: italic;
+  margin-top: 4px;
+}
